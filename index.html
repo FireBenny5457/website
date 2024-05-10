@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love Ralsei</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Set background color to black */
+            overflow: hidden; /* Prevents horizontal scrollbars */
+            position: relative;
+        }
+        .ralsei-gif {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            pointer-events: none; /* Prevents the images from interfering with mouse events */
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            z-index: 3; /* Set text above Ralsei */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Function to create and add Ralsei GIFs to cover the entire page
+        function addRalseiGifs() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const ralseiWidth = 100; // Width of each Ralsei GIF
+            const ralseiHeight = 100; // Height of each Ralsei GIF
+            const numCols = Math.ceil(screenWidth / ralseiWidth);
+            const numRows = Math.ceil(screenHeight / ralseiHeight);
+            const totalRalseis = numCols * numRows;
+
+            for (let i = 0; i < totalRalseis; i++) {
+                const ralsei = document.createElement('img');
+                ralsei.src = 'media/hoppsie.gif'; // Replace with the path to your Ralsei GIF
+                ralsei.alt = 'hoppsei';
+                ralsei.classList.add('hoppsie-gif');
+                ralsei.style.left = `${(i % numCols) * ralseiWidth}px`;
+                ralsei.style.top = `${Math.floor(i / numCols) * ralseiHeight}px`;
+                document.body.appendChild(ralsei);
+            }
+        }
+
+        // Call the function when the page is loaded
+        window.addEventListener('load', addRalseiGifs);
+    </script>
+
+    <div class="text">I Love Ralsei</div>
+</body>
+</html>
